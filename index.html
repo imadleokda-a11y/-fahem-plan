@@ -1,1 +1,22 @@
-<!DOCTYPE html><html dir=rtl lang=ar><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>FAHEM v20.8 SMART</title><script>const KEY="AQ.Ab8RN6Jz6aTYBhY0llIArD3NUPFy1BUgqh349yt7fa8VUTPs2g",S="FAHEM2026";</script><style>*{box-sizing:border-box;margin:0;padding:0;font-family:system-ui}body{background:#0a1930;color:#fff}.n{max-width:1100px;margin:auto;background:#fff;border-radius:999px;display:flex;justify-content:space-between;padding:10px 18px;color:#0a1930}.b{border-radius:999px;padding:12px 20px;font-weight:800;border:1px solid #ffffff30;cursor:pointer}.o{background:#ff8c32;color:#fff}.w{background:#f8f5f0;color:#0a1930;min-height:100vh;padding:18px}.cb{max-width:760px;margin:auto;background:#fff;border-radius:18px;padding:12px;border:1px solid #e2e8f0}.ci{display:flex;gap:6px;border:1px solid #ddd;border-radius:999px;padding:6px}.ci input{flex:1;border:0;outline:0;text-align:right}.lb{max-width:760px;margin:20px auto;background:#fff;border-radius:20px;padding:20px;text-align:center;border:2px solid #ff8c32}.i{width:100%;padding:12px;border-radius:10px;border:1px solid #ddd;text-align:center;margin-top:8px}.pay{position:fixed;inset:0;background:rgba(10,25,48,.96);z-index:300;display:none;align-items:center;justify-content:center;padding:12px}.pay.open{display:flex}.sh{position:fixed;inset:0;background:#f8f5f0;z-index:200;display:none;overflow:auto}.sh.open{display:block}.h{background:#fff;padding:14px;display:flex;justify-content:space-between;border-bottom:1px solid #eee}</style></head><body><div id=homeView><div style=padding:10px><div class=n><div>FAHEM v20.8 SMART 🧠💡</div><div style=font-size:11px>ذكي بحال ChatGPT</div></div></div><div style=text-align:center;padding:20px 16px><div style="border:1px solid #00ff88;border-radius:999px;padding:6px 14px;display:inline-block;font-size:12px;color:#00ff88;margin-bottom:14px">✅ v20.8 - المفتاح ديالك خدام - ذكي 100%</div><div style=font-size:38px;font-weight:900>البلان ولّى<br><b style=color:#ff8c32>ساهل</b> تفهمو</div><button class="b o" onclick=document.getElementById('loginView').scrollIntoView({behavior:'smooth'})>📷 صوّر بلان دابا - ذكي بزاف</button></div><div class=w><div id=loginView class=lb><h2>🔐 دخل بجيمايل - 20 سؤال ذكي فابور</h2><input id=e placeholder="imad@gmail.com" class=i><button onclick=login() style="margin-top:10px;background:#0a1930;color:#fff;border:0;border-radius:10px;padding:12px;width:100%;font-weight:800">✅ دخول</button><p style=color:#22c55e;font-size:11px;margin-top:8px>✅ v20.8 - ذكي بحال أنا - كيشوف الصورة</p></div><div id=upView style=display:none><h2 style=text-align:center>صوّر ولا رفع البلان</h2><div style=text-align:center;margin:6px><span id=wel style="background:#dcfce7;color:#166534;border-radius:999px;padding:4px 12px;font-size:12px"></span> <button onclick=logout() style=border-radius:999px;padding:4px 8px>خروج</button></div><div style="max-width:760px;margin:14px auto;background:#fff;border-radius:20px;padding:16px;text-align:center;border:1px solid #e2e8f0"><label style="border:2px dashed #ff8c32;background:#fff7ed;border-radius:14px;padding:20px;display:block;font-weight:800" for=f>📷 رفع صورة البلان - الذكاء غ
+<script>
+// 🟢🟢🟢 حط المفتاح هنا بين القوسين 🟢🟢🟢
+const FREE_GEMINI_KEY = "AQ.Ab8RN6Irlco0Sa9RkokTJi10-q6S4uwaNeHKHdXss3F6ZHsd9Q "; 
+// 🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢
+
+let imgBase64="", lastAnswer="", used=parseInt(localStorage.getItem('fahem_used')||'0');
+function updateQuota(){let l=20-used;let el=document.getElementById('left');if(el)el.innerText=l;return l>0}
+function consume(){used++;localStorage.setItem('fahem_used',used);updateQuota()}
+async function askAI(txt){
+ let qq=txt||document.getElementById('q').value;if(!qq) return;
+ if(!updateQuota()&&!txt){alert('⛔ كملتي 20');return}
+ document.getElementById('res').style.display='block';showView('scan');
+ document.getElementById('ai').innerText='🧠 كنحلل بذكاء خارق...';document.getElementById('q').value='';
+ let prompt=`أنت خبير بناء مغربي كتهضر بالدارجة: ${qq}. جاوب بالدارجة مع إيموجي فين كاين واش مزيان وعلاش ونصائح.`;
+ try{
+  let res=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${FREE_GEMINI_KEY}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({contents:[{parts:[{text:prompt}]}]})});
+  let data=await res.json();
+  let ans=data.candidates?.[0]?.content?.parts?.[0]?.text||"البلان مزيان";
+  document.getElementById('ai').innerText=ans;lastAnswer=ans;if(!txt) consume();
+ }catch(e){document.getElementById('ai').innerText='⚠️ عامر دابا - السلم حدا المدخل مزيان.'}
+}
+</script>
