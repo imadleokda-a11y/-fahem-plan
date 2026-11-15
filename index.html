@@ -3,25 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>فاهم بلان v65 - 20 مجانا + واتساب 1000</title>
+<title>فاهم بلان v65 - ذكاء حقيقي</title>
 <style>
 :root{--bg:#0f172a;--card:#1e293b;--accent:#38bdf8;--green:#22c55e;--text:#f1f5f9}
-body{margin:0;font-family:system-ui;background:var(--bg);color:var(--text);min-height:100vh}
-header{padding:14px;text-align:center;background:#1e293b;position:sticky;top:0;z-index:10;border-bottom:2px solid var(--accent)}
+body{margin:0;font-family:system-ui;background:var(--bg);color:var(--text)}
+header{padding:14px;text-align:center;background:#1e293b;border-bottom:2px solid var(--accent)}
 .container{max-width:760px;margin:0 auto;padding:12px}
 .card{background:var(--card);border-radius:16px;padding:14px;margin-bottom:12px;border:1px solid #334155}
-.btn{background:var(--accent);color:#0f172a;border:0;padding:12px 18px;border-radius:10px;font-weight:bold;cursor:pointer;width:100%;font-size:16px}
+.btn{background:var(--accent);color:#0f172a;border:0;padding:12px;border-radius:10px;font-weight:bold;cursor:pointer;width:100%;font-size:16px}
 .btn-wa{background:#25D366;color:white;font-size:18px}
-.msg{padding:12px;border-radius:12px;margin:8px 0;line-height:1.7;white-space:pre-wrap}
+.msg{padding:12px;border-radius:12px;margin:8px 0;line-height:1.7;white-space:pre-wrap;word-break:break-word}
 .user{background:#334155}
 .ai{background:linear-gradient(135deg,#0e7490,#155e75);border:1px solid #22d3ee}
-#messages{max-height:52vh;overflow:auto}
-textarea{width:100%;padding:12px;border-radius:12px;border:1px solid #334155;background:#0f172a;color:white;box-sizing:border-box;min-height:60px;resize:none}
+#messages{max-height:50vh;overflow:auto}
+textarea{width:100%;padding:12px;border-radius:12px;border:1px solid #334155;background:#0f172a;color:white;box-sizing:border-box;min-height:60px}
 .counter{border:2px solid #38bdf8;border-radius:12px;padding:10px;text-align:center;margin-bottom:12px;font-weight:bold}
-.counter.free{border-color:#22c55e}
-.counter.done{border-color:#ef4444;background:#7f1d1d}
+.free{border-color:#22c55e}
+.done{border-color:#ef4444;background:#7f1d1d}
 .premium{background:linear-gradient(135deg,#f59e0b,#ef4444);color:white;padding:18px;border-radius:16px;text-align:center}
-.badge{display:inline-block;background:#22c55e;color:white;padding:4px 8px;border-radius:20px;font-size:11px}
+.badge{background:#22c55e;color:white;padding:4px 8px;border-radius:20px;font-size:11px}
 .preview img{max-width:100%;border-radius:12px;margin-top:8px;border:2px solid var(--accent)}
 .small{font-size:12px;color:#94a3b8}
 </style>
@@ -29,24 +29,21 @@ textarea{width:100%;padding:12px;border-radius:12px;border:1px solid #334155;bac
 <body>
 <header>
 <h1 style="margin:0">فاهم بلان v65 🏗️ <span class="badge">20 مجانا</span></h1>
-<div class="small" style="color:#38bdf8">ذكاء اصطناعي حقيقي - صوت + صورة + حساب دقيق</div>
+<div class="small" style="color:#38bdf8">🎤 صوت + 📷 صورة + 🧠 ذكاء حقيقي Gemini</div>
 </header>
 <div class="container">
-<div class="counter free" id="counter">⏳ كيحسب...</div>
+<div class="counter free" id="counter">⏳...</div>
 <div class="card">
-<div id="messages">
-<div class="msg ai">مرحبا بك فـ فاهم بلان v65! 👋
+<div id="messages"><div class="msg ai">مرحبا عماد! v65 واجد 100%! 👋
 
-عندك 20 سؤال فابور فالنهار تجرب الذكاء الخارق.
+✅ عندك 20 سؤال فابور فالنهار
+🎤 هضر بالصوت - كليكي 🎤
+📷 صور البلان - كليكي 📷
+🏗️ سول: شحال السيما لـ 100m؟
 
-🎤 هضر بالصوت - كليكي على 🎤
-📷 صيفط تصويرة ديال البلان - كليكي على 📷
-🏗️ سول: شحال ديال السيما خاصني لـ 100m²؟
-
-الذكاء الحقيقي خدام 100% - يلا بدا!</div>
-</div>
+الذكاء الحقيقي خدام - يلا جرب!</div></div>
 <div class="preview" id="preview"></div>
-<textarea id="userInput" placeholder="كتب سؤالك... مثلا: عندي دار 80 متر شحال خاصني سيما؟"></textarea>
+<textarea id="userInput" placeholder="كتب سؤالك..."></textarea>
 <div style="display:flex;gap:8px;margin-top:10px">
 <input type="file" id="fileInput" accept="image/*" hidden>
 <button class="btn" style="width:auto;background:#334155;color:white" onclick="document.getElementById('fileInput').click()">📷</button>
@@ -55,46 +52,17 @@ textarea{width:100%;padding:12px;border-radius:12px;border:1px solid #334155;bac
 </div>
 </div>
 <div id="premiumBox" style="display:none" class="card premium">
-<h2 style="margin:0 0 8px 0">🎉 ساليتي 20 سؤال المجانية!</h2>
-<p>عجبك فاهم بلان؟ بغيتي تكمل 1000 سؤال بلا حدود؟</p>
+<h2>🎉 ساليتي 20 المجانية!</h2>
+<p>بغيتي تكمل 1000 سؤال بلا حدود؟</p>
 <a id="waLink" href="#" target="_blank" class="btn btn-wa">💬 واتساب 06 47 20 53 83</a>
-<div style="margin-top:10px;font-size:13px;background:rgba(0,0,0,0.3);padding:8px;border-radius:8px">
-💰 الثمن رمزي - وافاكاش / كاش بليس<br>⚡ التفعيل فوري - 1000 سؤال
+<div style="margin-top:8px;font-size:13px;background:rgba(0,0,0,0.3);padding:8px;border-radius:8px">💰 وافاكاش / كاش بليس - تفعيل فوري</div>
 </div>
-</div>
-<div class="card small" style="text-align:center">🔒 الكلي محمي - 20 سؤال/نهار - imadleokda-a11y.github.io</div>
 </div>
 <script>
-const API_KEY = "AQ.Ab8RN6Kn3SC8JeNnvi0MKkHoZPHvCfr4ky1tlzial5PE-lamIQ";
-const FREE_LIMIT = 20;
-const WHATSAPP_NUMBER = "212647205383";
-function getTodayKey(){return "fahem_v65_"+new Date().toISOString().slice(0,10);}
-function getCount(){return parseInt(localStorage.getItem(getTodayKey())||"0");}
-function incCount(){localStorage.setItem(getTodayKey(),(getCount()+1).toString());updateCounter();}
-function updateCounter(){
- const c=getCount(); const remain=FREE_LIMIT-c; const el=document.getElementById("counter"); const box=document.getElementById("premiumBox");
- if(remain>0){el.className="counter free"; el.innerHTML=`🎁 باقي ليك <b>${remain}</b> سؤال فابور اليوم | استعملتي ${c} من ${FREE_LIMIT}`; box.style.display="none";}
- else{el.className="counter done"; el.innerHTML=`⛔ ساليتي ${FREE_LIMIT} سؤال - بغيتي تكمل؟`; box.style.display="block"; const code=Math.random().toString(36).slice(2,8).toUpperCase(); const msg=`السلام عماد، من موقع فاهم بلان، ساليت 20 المجانية، بغيت 1000 سؤال، الكود: ${code}`; document.getElementById("waLink").href=`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;}
-}
-updateCounter();
-let selectedImageBase64=null;
-function addMsg(text,cls){const m=document.getElementById("messages");const d=document.createElement("div");d.className="msg "+cls;d.textContent=text;m.appendChild(d);m.scrollTop=m.scrollHeight;}
-document.getElementById("fileInput").onchange=e=>{const file=e.target.files[0];if(!file)return;const r=new FileReader();r.onload=ev=>{selectedImageBase64=ev.target.result.split(",")[1];document.getElementById("preview").innerHTML='<img src="'+ev.target.result+'"><div class=small>✅ تصويرة واجدة</div>';};r.readAsDataURL(file);};
-async function send(){
- if(getCount()>=FREE_LIMIT){updateCounter();addMsg("⛔ ساليتي 20 فابور! بغيتي 1000؟ كليكي واتساب لتحت 💬","ai");return;}
- const text=document.getElementById("userInput").value.trim(); if(!text&&!selectedImageBase64)return;
- addMsg(text||"شنو فالصورة؟","user"); document.getElementById("userInput").value=""; document.getElementById("sendBtn").disabled=true; document.getElementById("sendBtn").innerText="كيجاوب... ⏳";
- try{
-  const parts=[]; if(text)parts.push({text:"أنت خبير بناء مغربي محترف في حساب السيما والبناء. جاوب بالدارجة المغربية باختصار ودقة مع أرقام واضحة. سؤال: "+text}); if(selectedImageBase64)parts.push({inline_data:{mime_type:"image/jpeg",data:selectedImageBase64}});
-  const models=["gemini-1.5-flash","gemini-1.5-flash-latest","gemini-1.5-pro"]; let answer=null; let lastErr="";
-  for(let model of models){const url=`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${API_KEY}`; try{const res=await fetch(url,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({contents:[{parts}]})}); const data=await res.json(); if(data.error){lastErr=data.error.message;continue;} answer=data.candidates?.[0]?.content?.parts?.[0]?.text; if(answer)break;}catch(err){lastErr=err.message;}}
-  if(answer){addMsg(answer,"ai"); incCount(); selectedImageBase64=null; document.getElementById("preview").innerHTML=""; try{const u=new SpeechSynthesisUtterance(answer.slice(0,280)); u.lang="ar-MA"; speechSynthesis.speak(u);}catch(e){}} else{addMsg("❌ خطأ: "+lastErr,"ai");}
- }catch(e){addMsg("❌ "+e.message,"ai");}
- document.getElementById("sendBtn").disabled=false; document.getElementById("sendBtn").innerText="إرسال 🚀";
-}
-let rec=null,isRec=false;
-function toggleVoice(){const SR=window.SpeechRecognition||window.webkitSpeechRecognition; if(!SR){alert("استعمل Chrome");return;} if(isRec){rec.stop();return;} rec=new SR(); rec.lang="ar-MA"; rec.interimResults=false; rec.onstart=()=>{isRec=true;document.getElementById("voiceBtn").innerText="⏹️";}; rec.onresult=e=>{document.getElementById("userInput").value=e.results[0][0].transcript; send();}; rec.onend=()=>{isRec=false;document.getElementById("voiceBtn").innerText="🎤";}; rec.start();}
-document.getElementById("userInput").addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();send();}});
-</script>
-</body>
-</html>
+const API_KEY = "AQ.Ab8RN6JiBlXyPowqu2ZTlF-NPhfFspWbOMbR7bVvJ2wcu6bARQ";
+const FREE_LIMIT=20;
+const WHATSAPP="212647205383";
+function todayKey(){return "fahem_v65_"+new Date().toISOString().slice(0,10);}
+function getCount(){return parseInt(localStorage.getItem(todayKey())||"0");}
+function incCount(){localStorage.setItem(todayKey(),(getCount()+1).toString());updateCounter();}
+function updateCounter(){const c=getCount();const r=FREE_LIMIT-c;const el=document.getElementById("counter");const box=document.getElementById("premiumBox");if(r>0){el.className="counter free";el.innerHTML=`🎁 باقي ليك <b>${r}</b> سؤال فابور | استعملتي ${c}/${FREE_LIMIT}`;box.style.display="none";}else{el.className="counter done";el.innerHTML=`⛔ ساليتي ${FREE_LIMIT} - بغيتي تكمل؟`;box.style.display="block";const code=Math.random().toString(36).slice(2,8).toUpperCase
