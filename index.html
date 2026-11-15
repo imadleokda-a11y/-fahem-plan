@@ -1,7 +1,7 @@
 <script>
-// 🟢🟢🟢 حط المفتاح هنا بين القوسين 🟢🟢🟢
-const FREE_GEMINI_KEY = "AQ.Ab8RN6Irlco0Sa9RkokTJi10-q6S4uwaNeHKHdXss3F6ZHsd9Q "; 
-// 🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢🟢
+// 🟢 حط المفتاح الجديد كامل هنا 🟢
+const FREE_GEMINI_KEY = "AQ.Ab8RN6Irlco0Sa9RkokTJi10-q6S4uwaNeHKHdXss3F6ZHsd9Q"; 
+// 🟢🟢🟢🟢🟢🟢🟢
 
 let imgBase64="", lastAnswer="", used=parseInt(localStorage.getItem('fahem_used')||'0');
 function updateQuota(){let l=20-used;let el=document.getElementById('left');if(el)el.innerText=l;return l>0}
@@ -13,8 +13,9 @@ async function askAI(txt){
  document.getElementById('ai').innerText='🧠 كنحلل بذكاء خارق...';document.getElementById('q').value='';
  let prompt=`أنت خبير بناء مغربي كتهضر بالدارجة: ${qq}. جاوب بالدارجة مع إيموجي فين كاين واش مزيان وعلاش ونصائح.`;
  try{
-  let res=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${FREE_GEMINI_KEY}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({contents:[{parts:[{text:prompt}]}]})});
+  let res=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${FREE_GEMINI_KEY}`,{method:'POST',headers:{'Content-Type':'application/json','x-goog-api-key': FREE_GEMINI_KEY},body:JSON.stringify({contents:[{parts:[{text:prompt}]}]})});
   let data=await res.json();
+  console.log(data);
   let ans=data.candidates?.[0]?.content?.parts?.[0]?.text||"البلان مزيان";
   document.getElementById('ai').innerText=ans;lastAnswer=ans;if(!txt) consume();
  }catch(e){document.getElementById('ai').innerText='⚠️ عامر دابا - السلم حدا المدخل مزيان.'}
