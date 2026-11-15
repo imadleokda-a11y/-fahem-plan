@@ -3,51 +3,146 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>فاهم بلان - كلشي ساهل</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
-<style>body{font-family:'Tajawal',sans-serif;}</style>
+<title>فاهم بلان - FAHEM PLAN AI</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,sans-serif;background:#FFF9F0;color:#17233A}
+button,input,textarea{font-family:inherit}
+header{position:sticky;top:0;z-index:20;background:#0A1F3D;color:#fff;padding:14px}
+.wrap{max-width:1000px;margin:auto;padding:0 14px}
+.logo{display:flex;gap:10px;align-items:center}
+.icon{width:44px;height:44px;border-radius:14px;background:#FF8A00;display:grid;place-items:center;font-size:24px}
+nav{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;margin-top:14px}
+nav button{border:0;border-radius:12px;padding:12px 4px;font-weight:800;background:#ffffff1a;color:#fff}
+.hero{background:#0A1F3D;color:#fff;border-radius:28px;padding:22px;margin-top:18px}
+.hero h1{font-size:50px;margin:10px 0}
+.hero h1 span{color:#FF8A00}
+.hero p{line-height:1.8}
+.btn{border:0;border-radius:16px;padding:15px;font-weight:900;cursor:pointer}
+.btn-o{background:#FF8A00;color:#fff}
+.btn-g{background:transparent;border:2px solid #ffffff59;color:#fff}
+.cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:16px}
+.cards button{background:#ffffff1a;border:1px solid #ffffff1a;color:#fff;border-radius:16px;padding:12px;text-align:right;font-weight:800}
+section{padding-top:30px}
+.card{background:#fff;border:1px solid #F0DCC5;border-radius:24px;padding:16px;margin-top:14px}
+.keybox{background:#FFF4E6;border:1px dashed #FF8A00;border-radius:16px;padding:14px}
+.keybox input{width:100%;border:1px solid #F0DCC5;border-radius:12px;padding:12px;margin-top:8px}
+.chatbox{height:300px;overflow-y:auto;background:#FFF9F0;border:1px solid #F0DCC5;border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:10px;margin-top:12px}
+.msg{max-width:88%;padding:12px;border-radius:16px;line-height:1.8;font-weight:600}
+.msg.user{background:#0A1F3D;color:#fff;align-self:flex-start}
+.msg.bot{background:#fff;border:1px solid #F0DCC5;align-self:flex-end}
+.chatrow{display:flex;gap:8px;margin-top:10px}
+.chatrow input{flex:1;border:1px solid #F0DCC5;border-radius:14px;padding:13px;background:#FFF9F0;font-weight:700}
+.mic{width:54px;height:54px;border-radius:50%;border:0;background:#FF8A00;color:#fff;font-size:24px}
+.mic.on{background:#e11d48}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.chips button{border:1px solid #F0DCC5;background:#fff;border-radius:999px;padding:9px 14px;font-weight:800}
+#board{height:280px;border:2px solid #0a1f3d26;border-radius:16px;margin-top:12px;position:relative;overflow:hidden;background-color:#FDF7EE;background-image:linear-gradient(#0a1f3d14 1px,transparent 1px),linear-gradient(90deg,#0a1f3d14 1px,transparent 1px);background-size:28px 28px}
+.pin{position:absolute;transform:translate(-50%,-50%);background:#FF8A00;color:#fff;border:0;border-radius:999px;padding:7px 10px;font-size:12px;font-weight:900}
+.lesson{border:1px solid #F0DCC5;background:#fff;border-radius:16px;margin-top:10px;overflow:hidden}
+.lesson button{width:100%;background:none;border:0;display:flex;gap:10px;padding:16px;text-align:right;font-weight:900;font-size:16px}
+.lesson p{display:none;margin:0 16px 16px;background:#FFF9F0;border-radius:12px;padding:14px;line-height:1.9}
+.lesson.open p{display:block}
+.row{display:flex;gap:10px;padding:14px 0;border-bottom:1px solid #F0DCC5;align-items:center}
+.row div{flex:1}
+.calc{background:#0A1F3D;color:#fff;border-radius:24px;padding:18px;margin-top:14px}
+.calc input{flex:1;border:0;border-radius:12px;padding:14px;font-size:20px;font-weight:900}
+.calcResult{background:#fff;color:#17233A;border-radius:16px;padding:16px;margin-top:14px;display:none}
+.mats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.mats div{background:#FFF9F0;border-radius:12px;padding:11px;display:flex;justify-content:space-between;font-weight:800;font-size:13px}
+footer{background:#0A1F3D;color:#fff;margin-top:30px;padding:22px 0;text-align:center}
+textarea{width:100%;min-height:80px;border:1px solid #F0DCC5;background:#FFF9F0;border-radius:12px;padding:12px}
+#preview{max-width:100%;border-radius:16px;margin-top:12px;display:none}
+.result{background:#0A1F3D;color:#fff;border-radius:16px;padding:16px;margin-top:14px;line-height:1.8;display:none}
+</style>
 </head>
-<body class="bg-[#0a1931] text-white min-h-screen relative overflow-x-hidden">
-<div class="absolute inset-0" style="background-image:linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px); background-size:40px 40px;"></div>
-
-<div class="relative p-3">
-<div class="bg-white/10 backdrop-blur-md border border-white/15 rounded-full px-6 py-3 flex justify-between items-center max-w-6xl mx-auto">
-<div class="flex gap-6 text-sm opacity-80"><a href="#learn">تعلم</a><a href="#scan">صوّر بلان</a></div>
-<div class="flex items-center gap-3"><div><div class="font-black text-xl leading-none">فاهم بلان</div><div class="text-[10px] opacity-60 tracking-widest">FAHEM PLAN AI</div></div><div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-blue-900">◫</div></div>
-</div>
-</div>
-
-<div class="relative max-w-6xl mx-auto px-6 pt-10 md:pt-16 text-center">
-<div class="inline-flex bg-white/10 border border-white/20 rounded-full px-5 py-1.5 text-xs gap-2 mb-8"><span>Français</span>·<span>English</span>·<span>عربي</span>·<span>بالدارجة المغربية</span></div>
-<h1 class="text-[42px] md:text-[84px] font-black leading-[0.85] mb-6">البلان ولّى<br><span>ساهل <span class="text-[#FF8C32]">تفهمو</span></span></h1>
-<p class="text-white/60 text-[17px] leading-8 max-w-[560px] mx-auto mb-12">صوّر البلان ديال الدار ديالك، وفاهم بلان يشرح ليك<br>كل بيت، كل باب، كل قياس وكل رمز... بحال إلا<br>كيهضر معاك صاحبك المهندس.</p>
-
-<div class="grid grid-cols-3 gap-3 max-w-[640px] mx-auto mb-8">
-<div onclick="goScan()" class="bg-white/[0.07] border border-white/15 rounded-[20px] p-6 cursor-pointer hover:bg-white/10 transition"><div class="text-3xl mb-3">📷</div><div class="text-[15px]">صوّر بلانك</div></div>
-<div class="bg-white/[0.07] border border-white/15 rounded-[20px] p-6"><div class="text-3xl mb-3">🎓</div><div class="text-[15px] leading-5">تعلم تقرا 📚<br>البلان</div></div>
-<div class="bg-white/[0.07] border border-white/15 rounded-[20px] p-6"><div class="text-3xl mb-3">💰</div><div class="text-[15px] leading-5">أثمنة مواد<br>البناء</div></div>
+<body>
+<header><div class="wrap">
+<div class="logo"><div class="icon">🏠</div><div><b>فاهم بلان FAHEM PLAN AI</b><br><small>باش كل واحد يفهم بلان دارو</small></div></div>
+<nav><button onclick="go('ai')">🎙️ هضر معايا</button><button onclick="go('analyzer')">📷 صوّر بلان</button><button onclick="go('learn')">📚 تعلم</button><button onclick="go('calculator')">🧮 حاسبة</button></nav>
+</div></header>
+<main class="wrap">
+<div class="hero">
+<h1>ساهل <span>تفهمو</span></h1>
+<p>صوّر البلان ديال الدار ديالك، وفاهم بلان يشرح ليك كل بيت، كل باب، كل قياس وكل رمز... بحال إلا كيهضر معاك صاحبك المهندس.</p>
+<div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-o" onclick="go('ai')">هضر مع فاهم بلان 🎙️</button><button class="btn btn-g" onclick="go('analyzer')">صوّر بلان دابا 📷</button></div>
+<div class="cards"><button onclick="go('analyzer')">صوّر بلانك 📷</button><button onclick="go('learn')">تعلم تقرا البلان 📚</button><button onclick="go('prices')">أثمنة مواد البناء 💰</button></div>
 </div>
 
-<div class="flex flex-col md:flex-row gap-3 justify-center max-w-[640px] mx-auto">
-<button class="bg-white/10 border border-white/20 rounded-full px-8 py-4 text-[15px]">تعلم من الصفر 🎓</button>
-<button onclick="goScan()" class="bg-[#FF8C32] rounded-full px-10 py-4 font-bold">صوّر بلان دابا 📷</button>
+<section id="ai"><h2>🎙️ هضر مع فاهم بلان</h2><p>سولو بالصوت ولا بالكتابة، يجاوبك بالدارجة.</p>
+<div class="card">
+<div class="keybox"><b>🔑 مفتاح Gemini API ديالك</b>
+<p style="font-size:13px;line-height:1.7">المفتاح كيبقى غير عندك فالجهاز ديالك. ما تحطوش ف GitHub إلا كان الريبو Public. جيبو من: aistudio.google.com</p>
+<input type="password" id="apiKey" placeholder="حط المفتاح هنا... AIza...">
+<button class="btn btn-o" style="width:100%;margin-top:10px" onclick="saveKey()">حفظ المفتاح ✅</button>
+<p id="keyStatus" style="font-weight:800">ما كاين حتى مفتاح محفوظ دابا</p>
+<label style="display:flex;gap:8px;align-items:center;font-weight:800"><input type="checkbox" id="voiceOn" checked style="width:20px;height:20px"> 🔊 سمع الجواب بالصوت</label>
 </div>
+<div class="chatbox" id="chatbox"></div>
+<div class="chips" id="quickQ"></div>
+<div class="chatrow"><input id="chatInput" placeholder="سولني: شنو هو البلان؟ شحال تقام دار 80 متر؟"><button class="btn btn-o" onclick="sendChat()">صيفط</button><button class="mic" id="micBtn" onclick="startVoice()">🎙️</button></div>
+</div></section>
 
-<div id="result" class="hidden mt-10 bg-white text-black rounded-[24px] p-6 max-w-[640px] mx-auto text-right"></div>
-<input type="file" id="fileInput" hidden accept="image/*">
+<section id="analyzer"><h2>📷 صوّر ولا رفع البلان ديالك</h2>
+<div class="card">
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<label class="btn btn-o" style="flex:1;text-align:center">📷 صوّر بالكاميرا<input type="file" accept="image/*" capture="environment" hidden onchange="previewImg(event)"></label>
+<label class="btn" style="flex:1;text-align:center;background:#0A1F3D;color:#fff">🖼️ رفع صورة<input type="file" accept="image/*" hidden onchange="previewImg(event)"></label>
 </div>
+<img id="preview">
+<button class="btn btn-o" style="width:100%;margin-top:10px" onclick="analyzeImage()">حلل هاد التصويرة بـ Gemini 🤖</button>
+<div class="result" id="imgResult"></div>
+<p><b>اللوحة التفاعلية - كليكي باش تزيد علامة • <span id="pinCount"></span></b></p>
+<div id="board"></div>
+<p style="font-weight:800">زيد علامة:</p><div class="chips" id="chips"></div>
+<div style="background:#FFF9F0;border:1px solid #F0DCC5;border-radius:16px;padding:14px;margin-top:14px;line-height:1.9;font-weight:600"><span style="color:#FF8A00">✨ الشرح ديال بلانك</span><p id="summary"></p></div>
+</div></section>
+
+<section id="learn"><h2>📚 تعلم تقرا البلان من الصفر</h2><div id="lessons"></div></section>
+
+<section id="prices"><h2>💰 أثمنة مواد البناء</h2>
+<div class="card"><input id="search" oninput="renderPrices()" placeholder="قلب على مادة..." style="width:100%;border:1px solid #F0DCC5;border-radius:12px;padding:12px;background:#FFF9F0;font-weight:800"><div id="priceList"></div></div></section>
+
+<section id="calculator"><h2>🧮 حساب تكلفة دارك</h2>
+<div class="calc"><label style="font-weight:800">المساحة بالمتر المربع</label>
+<div style="display:flex;gap:8px;margin-top:10px"><input type="number" id="area" value="50"><button class="btn btn-o" onclick="calc()">حسب</button></div>
+<div class="calcResult" id="calcResult"><span>التكلفة الإجمالية التقريبية:</span><h3 id="total" style="font-size:32px;margin:4px 0"></h3><p id="formula" style="color:#E97900;font-weight:800"></p><div class="mats" id="mats"></div></div>
+<p style="font-size:12px;line-height:1.8;color:#ffffffb3">هاد الكميات غير افتراضات للتقريب حسب المساحة، ماشي كميات مستخرجة من البلان. المجموع محسوب بالمتوسط، ماشي بجمع أثمنة المواد؛ ما كيشملش الأرض والرخص.</p>
+</div></section>
+</main>
+<footer><b>فاهم بلان FAHEM PLAN AI</b><p>صنع فالمغرب، باش كل واحد يفهم بلان دارو.</p></footer>
 
 <script>
-function goScan(){document.getElementById('fileInput').click()}
-document.getElementById('fileInput').onchange = e=>{
- const file = e.target.files[0];
- if(!file) return;
- const r = document.getElementById('result');
- r.classList.remove('hidden');
- r.innerHTML = `✅ تم تحميل البلان: <b>${file.name}</b><br><br>🏠 فاهم بلان كيقرا ليك دابا...<br><br>• المساحة: ~120m²<br>• 3 بيوت + صالون + كوزينة<br>• القياسات واضحة<br><br><i>هادي نسخة تجريبية بلا علامة مائية - تقدر تزيد عليها الذكاء الاصطناعي الحقيقي من بعد</i>`;
- r.scrollIntoView({behavior:'smooth'});
-}
+function go(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}
+function getKey(){return localStorage.getItem('fahem_gemini_key')||''}
+function saveKey(){let v=document.getElementById('apiKey').value.trim();if(!v){alert('حط المفتاح بعدا');return}localStorage.setItem('fahem_gemini_key',v);document.getElementById('keyStatus').textContent='المفتاح محفوظ ✅';document.getElementById('apiKey').value='';alert('تم حفظ المفتاح فالجهاز ديالك ✅')}
+if(getKey())document.getElementById('keyStatus').textContent='المفتاح محفوظ ✅';
+function speak(t){if(!document.getElementById('voiceOn').checked)return;try{speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(t);u.lang='ar-MA';u.rate=0.95;speechSynthesis.speak(u)}catch(e){}}
+let chatbox=document.getElementById('chatbox');
+function addMsg(text,who){let d=document.createElement('div');d.className='msg '+who;d.innerHTML=text+'<br><button onclick="speak(this.parentElement.innerText)" style="border:0;background:none;cursor:pointer">🔊 سمع</button>';chatbox.appendChild(d);chatbox.scrollTop=chatbox.scrollHeight}
+addMsg('السلام! أنا فاهم بلان. سولني: شنو هو البلان؟ شحال غادي تقام عليا دار 80 متر؟','bot');
+function fallbackAnswer(q){q=q.toLowerCase();if(q.includes('باب'))return 'الباب: قلب على القوس، هو اللي كيبين فين كيتحل الباب. الباب الرئيسي خاصو يكون واضح وكبير.';if(q.includes('شرجم'))return 'الشرجم: خطين متوازيين فالحيط. إلا كان كبير وفالجهة المشمسة، الصالة غادي تكون مضوية.';if(q.includes('تكلفة')||q.includes('تقام')||q.includes('متر'))return 'باش تحسب: المساحة × 1500 درهم تقريبا. مثلا دار 80 متر = 120,000 درهم تقريبا. جرب الحاسبة لتحت.';if(q.includes('بلان'))return 'البلان هو رسمة ديال الدار كتشوفها من الفوق، بحال إلا حيدتي السقف. كل خط كيمثل حيط، وكل فراغ كيمثل باب ولا شرجم.';if(q.includes('حيط'))return 'الحيط الغليظ هو الحيط الحامل، ما تحيدوش. الحيط الرقيق عادي.';return 'مزيان سولتيني! البلان كيتقرا من الفوق: الحيوط الغلاض هما الحاملين، الفراغات هما البيبان والشراجم، والأرقام هما القياسات بالمتر. إلا بغيتي جواب أدق، حط مفتاح Gemini لفوق.'}
+async function callGemini(prompt){let key=getKey();let res=await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key='+key,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({contents:[{parts:[{text:prompt}]}]})});let data=await res.json();if(data.error)throw new Error(data.error.message);return data.candidates[0].content.parts[0].text}
+async function sendChat(){let inp=document.getElementById('chatInput');let q=inp.value.trim();if(!q)return;addMsg(q,'user');inp.value='';let loading=document.createElement('div');loading.className='msg bot';loading.textContent='فاهم بلان كيكتب...';chatbox.appendChild(loading);try{let ans;if(!getKey()){ans=fallbackAnswer(q)+'<br><br>💡 حط مفتاح Gemini باش يجاوبك بذكاء أكتر.'}else{ans=await callGemini('أنت مساعد مغربي اسمه فاهم بلان، جاوب بالدارجة المغربية ببساطة، قصير وواضح، على سؤال حول مخططات البناء (البلان)، المواد، التكلفة. السؤال: '+q)}loading.remove();addMsg(ans,'bot');speak(ans.replace(/<[^>]*>/g,''))}catch(e){loading.remove();let f=fallbackAnswer(q);addMsg('واقع مشكل ف Gemini: '+e.message+'<br><br>ها جواب بديل: '+f,'bot');speak(f)}}
+document.getElementById('chatInput').addEventListener('keydown',e=>{if(e.key==='Enter')sendChat()});
+['شنو هو البلان؟','شحال تقام دار 80 متر؟','شنو هو الشرجم؟','شنو هما الحيوط الحاملين؟'].forEach(q=>{let b=document.createElement('button');b.textContent=q;b.onclick=()=>{document.getElementById('chatInput').value=q;sendChat()};document.getElementById('quickQ').appendChild(b)});
+function startVoice(){let SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){alert('المتصفح ديالك ما كيدعمش الصوت. جرب Chrome.');return}let rec=new SR();rec.lang='ar-MA';let btn=document.getElementById('micBtn');btn.classList.add('on');rec.onresult=e=>{document.getElementById('chatInput').value=e.results[0][0].transcript;sendChat()};rec.onend=()=>btn.classList.remove('on');rec.start()}
+let lastImageBase64='',lastImageType='image/jpeg';
+function previewImg(e){let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{let img=document.getElementById('preview');img.src=r.result;img.style.display='block';lastImageBase64=r.result.split(',')[1];lastImageType=f.type||'image/jpeg'};r.readAsDataURL(f)}
+async function analyzeImage(){let box=document.getElementById('imgResult');box.style.display='block';if(!lastImageBase64){box.textContent='صوّر ولا رفع تصويرة بعدا 📷';return}if(!getKey()){box.innerHTML='خاصك مفتاح Gemini باش نحلل التصويرة. حطو لفوق.';return}box.textContent='كنحلل التصويرة...';try{let key=getKey();let res=await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key='+key,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({contents:[{parts:[{text:'اشرح هذا المخطط المعماري بالدارجة المغربية ببساطة: البيوت، الأبواب، الشراجم، القياسات، ونصائح مهمة.'},{inline_data:{mime_type:lastImageType,data:[STRIPPED] data=await res.json();if(data.error)throw new Error(data.error.message);let ans=data.candidates[0].content.parts[0].text;box.innerHTML=ans.replace(/\n/g,'<br>');speak(ans)}catch(e){box.textContent='واقع مشكل: '+e.message}}
+let chipNames=['بيت','صالة','كوزينة','حمام','باب','شرجم','سلم','قياس'];let selected='صالة';let pins=[{x:28,y:32,label:'صالة'},{x:68,y:28,label:'كوزينة'},{x:65,y:68,label:'بيت'}];
+chipNames.forEach(n=>{let b=document.createElement('button');b.textContent=n;if(n===selected)b.style.background='#0A1F3D',b.style.color='#fff';b.onclick=()=>{selected=n;document.querySelectorAll('#chips button').forEach(x=>{x.style.background='';x.style.color=''});b.style.background='#0A1F3D';b.style.color='#fff'};document.getElementById('chips').appendChild(b)});
+const board=document.getElementById('board');
+function renderPins(){board.querySelectorAll('.pin').forEach(e=>e.remove());pins.forEach((p,i)=>{let b=document.createElement('button');b.className='pin';b.textContent='📍 '+p.label+' ×';b.style.left=p.x+'%';b.style.top=p.y+'%';b.onclick=e=>{e.stopPropagation();pins.splice(i,1);renderPins()};board.appendChild(b)});document.getElementById('pinCount').textContent=pins.length+' علامات';let c={};pins.forEach(p=>c[p.label]=(c[p.label]||0)+1);let parts=[];if(c['صالة'])parts.push('صالة');if(c['بيت'])parts.push(c['بيت']+' بيوت');if(c['كوزينة'])parts.push('كوزينة');if(c['حمام'])parts.push('حمام');document.getElementById('summary').textContent=(parts.length?('هاد البلان فيه: '+parts.join('، ')+'. '):'زيد شي علامة على اللوحة باش نبداو. ')+'الباب الرئيسي خاصو يكون واضح، والشراجم خاصها تدخل الضو.'}
+board.onclick=e=>{let r=board.getBoundingClientRect();let x=(e.clientX-r.left)/r.width*100;let y=(e.clientY-r.top)/r.height*100;pins.push({x,y,label:selected});renderPins()};
+renderPins();
+const lessons=[['شنو هو البلان؟','البلان هو رسمة ديال الدار كتشوفها من الفوق، بحال إلا حيدتي السقف. كل خط كيمثل حيط، وكل فراغ كيمثل باب ولا شرجم.'],['الحيوط','الخط الغليظ = حيط رئيسي حامل، الخط الرقيق = حيط عادي.'],['الأبواب','قوس صغير كيبين فين كيتحل الباب وفين كيمشي.'],['الشراجم','خطين متوازيين فالحيط، كيبينو فين كيدخل الضو والهواء.'],['القياسات','الأرقام بالمتر، ديما قيس الطول والعرض قبل ما تحكم.'],['الرموز ديال الكهرباء والماء','نقطة = بريزة، دائرة = بولا، خط متموج = الماء.'],['السلم والاتجاه','السهم كيبين طالع ولا نازل، والسهم ديال الشمال كيبين اتجاه الدار.']];
+lessons.forEach((l,i)=>{let d=document.createElement('div');d.className='lesson'+(i===0?' open':'');d.innerHTML='<button><span>'+(i+1)+'. '+l[0]+'</span><span>⌄</span></button><p>'+l[1]+'</p>';d.querySelector('button').onclick=()=>{let was=d.classList.contains('open');document.querySelectorAll('.lesson').forEach(x=>x.classList.remove('open'));if(!was)d.classList.add('open')};document.getElementById('lessons').appendChild(d)});
+const materials=[['الإسمنت','80 د.ج','كيس 50kg'],['الحديد','120 د.ج','متر'],['الرمل','200 د.ج','طن'],['البلوك','2.5 د.ج','حبة'],['الزليج','من 50 د.ج','م2'],['البيطون','800 د.ج','م3']];
+function renderPrices(){let q=document.getElementById('search').value.trim();let f=materials.filter(m=>!q||m[0].includes(q));document.getElementById('priceList').innerHTML=f.map(m=>'<div class="row"><span style="font-size:22px">🧱</span><div><b>'+m[0]+'</b></div><div style="text-align:left"><strong>'+m[1]+'</strong><br><small>/ '+m[2]+'</small></div></div>').join('')}
+renderPrices();
+function calc(){let area=Number(document.getElementById('area').value)||0;let total=area*1500;let el=document.getElementById('calcResult');el.style.display='block';document.getElementById('total').textContent=total.toLocaleString('ar-MA')+' درهم';document.getElementById('formula').textContent=area+' م2 × 1,500 درهم / م2 (متوسط)';document.getElementById('mats').innerHTML=[['الإسمنت',Math.round(area*3)+' كيس'],['الحديد',Math.round(area*4)+' متر'],['الرمل',(area*0.3).toFixed(1)+' طن'],['البلوك',Math.round(area*20)+' حبة'],['الزليج',area+' م2'],['البيطون',(area*0.15).toFixed(1)+' م3']].map(m=>'<div><span>'+m[0]+'</span><b>'+m[1]+'</b></div>').join('')}
+calc();
 </script>
 </body>
 </html>
