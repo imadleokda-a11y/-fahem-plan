@@ -66,3 +66,29 @@ function todayKey(){return "fahem_v65_"+new Date().toISOString().slice(0,10);}
 function getCount(){return parseInt(localStorage.getItem(todayKey())||"0");}
 function incCount(){localStorage.setItem(todayKey(),(getCount()+1).toString());updateCounter();}
 function updateCounter(){const c=getCount();const r=FREE_LIMIT-c;const el=document.getElementById("counter");const box=document.getElementById("premiumBox");if(r>0){el.className="counter free";el.innerHTML=`🎁 باقي ليك <b>${r}</b> سؤال فابور | استعملتي ${c}/${FREE_LIMIT}`;box.style.display="none";}else{el.className="counter done";el.innerHTML=`⛔ ساليتي ${FREE_LIMIT} - بغيتي تكمل؟`;box.style.display="block";const code=Math.random().toString(36).slice(2,8).toUpperCase
+function updateCounter(){const c=getCount();const r=FREE_LIMIT-c;const el=document.getElementById("counter");const box=document.getElementById("premiumBox");if(r>0){el.className="counter free";el.innerHTML=`🎁 باقي ليك <b>${r}</b> سؤال فابور | استعملتي ${c}/${FREE_LIMIT}`;box.style.display="none";}else{el.className="counter done";el.innerHTML=`⛔ ساليتي ${FREE_LIMIT} - بغيتي تكمل؟`;box.style.display="block";const code=Math.random().toString(36).slice(2,8).toUpperCase();const msg=`السلام عماد، من فاهم بلان، ساليت 20، بغيت 1000، الكود:${code}`;document.getElementById("waLink").href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`;}}
+updateCounter();
+let imgB64=null;
+function addMsg(t,cls){const m=document.getElementById("messages");const d=document.createElement("div");d.className="msg "+cls;d.textContent=t;m.appendChild(d);m.scrollTop=m.scrollHeight;}
+document.getElementById("fileInput").onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{imgB64=ev.target.result.split(",")[1];document.getElementById("preview").innerHTML='<img src="'+ev.target.result+'"><div class=small>✅ واجدة</div>';};r.readAsDataURL(f);};
+async function send(){
+ if(getCount()>=FREE_LIMIT){updateCounter();addMsg("⛔ ساليتي 20! بغيتي 1000؟ كليكي واتساب لتحت 💬","ai");return;}
+ const txt=document.getElementById("userInput").value.trim();if(!txt&&!imgB64)return;
+ addMsg(txt||"شنو فالصورة؟","user");document.getElementById("userInput").value="";document.getElementById("sendBtn").disabled=true;document.getElementById("sendBtn").innerText="كيجاوب... ⏳";
+ try{
+  const parts=[];if(txt)parts.push({text:"أنت خبير بناء مغربي، جاوب بالدارجة المغربية باختصار ودقة مع أرقام. سؤال: "+txt});if(imgB64)parts.push({inline_data:{mime_type:"image/jpeg",data:imgB64}});
+  const models=["gemini-2.0-flash","gemini-1.5-flash","gemini-1.5-flash-latest"];let ans=null;let errM="";
+  for(let model of models){
+   const url=`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${API_KEY}`;
+   try{const res=await fetch(url,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({contents:[{parts}]})});const data=await res.json();if(data.error){errM=data.error.message;continue;}ans=data.candidates?.[0]?.content?.parts?.[0]?.text;if(ans)break;}catch(e){errM=e.message;}
+  }
+  if(ans){addMsg(ans,"ai");incCount();imgB64=null;document.getElementById("preview").innerHTML="";try{const u=new SpeechSynthesisUtterance(ans.slice(0,300));u.lang="ar-MA";speechSynthesis.speak(u);}catch(e){}}else{addMsg("❌ خطأ: "+errM,"ai");}
+ }catch(e){addMsg("❌ "+e.message,"ai");}
+ document.getElementById("sendBtn").disabled=false;document.getElementById("sendBtn").innerText="إرسال 🚀";
+}
+let rec=null,isRec=false;
+function toggleVoice(){const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){alert("استعمل Chrome");return;}if(isRec){rec.stop();return;}rec=new SR();rec.lang="ar-MA";rec.onstart=()=>{isRec=true;document.getElementById("voiceBtn").innerText="⏹️";};rec.onresult=e=>{document.getElementById("userInput").value=e.results[0][0].transcript;send();};rec.onend=()=>{isRec=false;document.getElementById("voiceBtn").innerText="🎤";};rec.start();}
+document.getElementById("userInput").addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();send();}});
+</script>
+</body>
+</html>
