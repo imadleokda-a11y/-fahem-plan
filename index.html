@@ -1,63 +1,135 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>FAHEM v35 - ذكاء خارق</title>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@700;800&display=swap" rel="stylesheet">
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FAHEM PLAN AI - فاهم بلان</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;800&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Tajawal}body{background:#f7f5f0;padding-bottom:130px}
-.header{background:#0f172a;color:#fff;padding:12px 16px;display:flex;justify-content:space-between;position:sticky;top:0;z-index:99}
-.view{display:none;padding:16px;min-height:80vh}.view.active{display:block}
-.card-dark{background:#0f172a;color:#fff;padding:30px 16px;text-align:center;border-radius:0 0 24px 24px}
-.btn{background:#f97316;color:#fff;border:none;padding:12px 24px;border-radius:999px;font-weight:800;cursor:pointer}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:20px 0}
-.box{border:1px solid rgba(255,255,255,.2);border-radius:18px;padding:16px;background:rgba(255,255,255,.05);cursor:pointer;text-align:center}
-.plan{position:relative;background:#fff;border-radius:16px;padding:8px;border:1px solid #ddd}
-.plan img{width:100%;border-radius:12px}.ai{background:#fff;border:2px solid #f97316;border-radius:15px;padding:14px;margin:12px 0;line-height:1.8;color:#0f172a;white-space:pre-wrap}
-.wa{position:fixed;bottom:90px;right:14px;background:#25D366;color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;z-index:999;text-decoration:none}
-.chat{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #ddd;padding:8px;display:flex;gap:6px;align-items:center}
-.chat input{flex:1;padding:12px;border-radius:999px;border:1px solid #ddd}
-.mic{width:48px;height:48px;border-radius:50%;border:none;background:#0f172a;color:#fff;font-size:20px}
-.mic.on{background:red;animation:p 1s infinite}@keyframes p{0%{transform:scale(1)}50%{transform:scale(1.1)}100%{transform:scale(1)}}
-.quota{background:#dcfce7;border:1px solid #22c55e;padding:10px;border-radius:12px;color:#166534;text-align:center;font-weight:700;margin:10px 0}
-</style></head><body>
-<div class="header"><b>فاهم بلان v35 🚀 ذكي خارق</b><span onclick="location.reload()">↻</span></div>
-<div id="home" class="view active"><div class="card-dark"><div style="border:1px solid #444;padding:4px 10px;border-radius:20px;display:inline-block;font-size:12px">🤖 ذكاء خارق فابور AQ</div><h1 style="font-size:38px;margin:16px 0">البلان ولّى<br><span style="color:#f97316">ساهل تفهمو</span></h1><div class="grid3"><div class="box" onclick="showView('prices')">💰<br>أثمنة</div><div class="box" onclick="showView('learn')">🎓<br>تعلم</div><div class="box" onclick="showView('scan')">📷<br>صوّر</div></div><button class="btn" onclick="showView('scan')">📷 صوّر بلان دابا</button></div></div>
-<div id="prices" class="view"><h2>أثمنة 💰</h2><div style="background:#fff;border-radius:12px;border:1px solid #ddd;margin-top:10px"><div style="padding:12px">📦 الإسمنت - 80 دج</div><div style="padding:12px">📏 الحديد - 120 دج</div><div style="padding:12px">🧱 البلوك - 2.5 دج</div></div><button onclick="showView('home')">→ رجوع</button></div>
-<div id="learn" class="view"><h1>تعلم</h1><div style="background:#fff;padding:12px;border-radius:12px;margin:8px 0;border:1px solid #ddd">🪜 السلم خاصو 1 متر ومضوي حدا المدخل</div><button onclick="showView('home')">→ رجوع</button></div>
-<div id="scan" class="view">
-<h2>صوّر البلان 📷</h2>
-<div class="quota">✅ باقي ليك: <span id="left">20</span> / 20 مجانا - خدام ذكاء خارق</div>
-<input type="file" id="file" accept="image/*" hidden>
-<div style="display:flex;gap:8px"><button class="btn" style="flex:1;background:#0f172a" onclick="file.click()">📷 كاميرا</button><button class="btn" style="flex:1" onclick="file.click()">🖼️ رفع</button></div>
-<div id="res" style="display:none"><div class="plan" style="margin-top:12px"><img id="up"></div><div id="ai" class="ai">كنحلل...</div><button class="btn" style="background:#25D366;width:100%" onclick="shareWA()">📲 صيفط فـ واتساب</button><button class="btn" style="width:100%;margin-top:8px;background:#0f172a" onclick="speakAI()">🔊 سمع الجواب</button></div>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Tajawal',sans-serif}
+body{background:#f8f6f1;color:#1e293b}
+.header{background:#1e293b;color:#fff;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100}
+.logo{font-weight:800;font-size:18px;line-height:1.1}.logo span{font-size:11px;opacity:.7;letter-spacing:2px;display:block}
+.btns{display:flex;gap:8px}.icon{width:36px;height:36px;background:rgba(255,255,255,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.view{display:none;padding:16px;max-width:800px;margin:0 auto}.view.active{display:block}
+.card{background:#fff;border-radius:20px;padding:16px;border:1px solid #e2e8f0;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.search{display:flex;align-items:center;background:#fff;border:1px solid #ddd;border-radius:999px;padding:10px 16px;margin:12px 0;gap:8px}
+.search input{flex:1;border:none;outline:none;background:transparent}
+.table{width:100%;border-collapse:collapse;background:#fff;border-radius:16px;overflow:hidden;border:1px solid #e2e8f0}
+.table th{background:#f1f5f9;padding:12px;text-align:center;color:#64748b;font-weight:500}
+.table td{padding:14px 12px;border-top:1px solid #f1f5f9;text-align:center}
+.badge{display:inline-block;background:#1e293b;color:#fff;padding:4px 12px;border-radius:20px;font-size:12px}
+.plan-wrap{background:#fff;border-radius:20px;padding:12px;border:1px solid #e2e8f0;position:relative}
+.plan-wrap img{width:100%;border-radius:12px}
+.dot{position:absolute;width:14px;height:14px;background:#f97316;border:2px solid #fff;border-radius:50%;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.3)}
+.simple{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:16px}
+.room{border:2px solid #1e293b;border-radius:8px;padding:16px;text-align:center;font-size:13px;font-weight:700;min-height:80px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.room:hover{transform:scale(1.02)}
+.room.bed{background:#ddd6fe}.room.living{background:#fed7aa}.room.kit{background:#fbcfe8}.room.bath{background:#a7f3d0}
+.legend{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px;font-size:12px}
+.legend span{display:flex;align-items:center;gap:4px}
+.accordion{border-bottom:1px solid #f1f5f9}.acc-head{padding:16px;display:flex;justify-content:space-between;cursor:pointer;font-weight:700;font-size:18px}.acc-body{display:none;padding:0 16px 16px;color:#475569;line-height:1.7}.acc-body.open{display:block}
+.tabs{display:flex;gap:8px;background:#f1f5f9;padding:6px;border-radius:999px;margin:16px 0;width:fit-content}
+.tab{padding:8px 16px;border-radius:999px;cursor:pointer;font-size:14px}.tab.active{background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.1);font-weight:700}
+.chat{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #e2e8f0;padding:10px 16px;display:flex;gap:8px;align-items:center;max-width:800px;margin:0 auto}
+.chat input{flex:1;padding:12px 16px;border-radius:999px;border:1px solid #e2e8f0;background:#f8fafc}
+.chat .send{background:#1e293b;color:#fff;border:none;padding:12px 20px;border-radius:999px;font-weight:700}
+.ai-box{background:#fff;border:2px solid #f97316;border-radius:16px;padding:14px;margin:12px 0;line-height:1.8;white-space:pre-wrap}
+.green-btn{background:#166534;color:#fff;border:none;padding:14px;width:100%;border-radius:16px;font-weight:800;font-size:16px;margin-top:12px;cursor:pointer}
+</style>
+</head>
+<body>
+<div class="header">
+<div style="display:flex;gap:12px;align-items:center"><div class="logo">فاهم بلان<span>FAHEM PLAN AI</span></div></div>
+<div class="btns"><div class="icon" onclick="showView('home')">⊞</div><div class="icon">📖</div><div class="icon" onclick="showView('scan')">+</div></div>
 </div>
-<a class="wa" href="https://wa.me/212647205383" target="_blank">💬</a>
-<div class="chat"><button class="mic" id="micBtn" onclick="startVoice()">🎤</button><input id="q" placeholder="سول: فين السلم واش مزيان؟"><button class="btn" onclick="askAI()">سول</button></div>
+
+<div id="home" class="view active">
+<div class="card" style="text-align:center;padding:32px 16px"><h1 style="font-size:32px">تعلم تقرا البلان من<br>الصفر</h1><p style="color:#64748b;margin:12px 0">سبع دروس قصار، بالدارجة، باش تولي تفهم أي بلان.</p><button class="green-btn" style="background:#1e293b" onclick="showView('learn')">ابدأ التعلم 📚</button><button class="green-btn" onclick="showView('scan')" style="background:#f97316;margin-top:8px">📷 صوّر بلان دابا</button></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px"><div class="card" onclick="showView('prices')" style="text-align:center;cursor:pointer"><div style="font-size:28px">💰</div><b>أثمنة مواد البناء</b><p style="font-size:12px;color:#64748b">شوف الأثمنة الحالية</p></div><div class="card" onclick="showView('scan')" style="text-align:center;cursor:pointer"><div style="font-size:28px">📷</div><b>حلّل بلان</b><p style="font-size:12px;color:#64748b">ذكاء خارق كيشوف الصورة</p></div></div>
+</div>
+
+<div id="prices" class="view">
+<div style="display:flex;justify-content:space-between;align-items:center"><h2>أثمنة مواد البناء 🪙</h2><span onclick="showView('home')" style="cursor:pointer">→ رجوع</span></div>
+<p style="color:#64748b;font-size:14px;margin:8px 0">أثمنة تقريبية بالدرهم، كتختلف حسب المدينة والجودة والمورد.</p>
+<div class="search"><span>🔍</span><input id="searchMat" placeholder="قلب على مادة..." oninput="filterMat()"></div>
+<table class="table" id="matTable">
+<tr><th>المادة</th><th>الثمن / الوحدة</th></tr>
+<tr><td>📦 الإسمنت</td><td><b>80 د.ج / 50kg</b></td></tr>
+<tr><td>📏 الحديد</td><td><b>120 د.ج / متر</b></td></tr>
+<tr><td>⛰️ الرمل</td><td><b>200 د.ج / طن</b></td></tr>
+<tr><td>🧱 البلوك</td><td><b>2.5 د.ج / حبة</b></td></tr>
+<tr><td>🧩 الزليج</td><td><b>من 50 د.ج / م²</b></td></tr>
+<tr><td>🚚 البيطون</td><td><b>800 د.ج / م³</b></td></tr>
+</table>
+<button class="green-btn" onclick="calcCost()">🧮 حساب تكلفة دارك</button>
+</div>
+
+<div id="scan" class="view">
+<h2>بلان ديال دار صغيرة (جوج بيوت وصالون)</h2><p style="color:#64748b;font-size:14px">architectural floor plan • الوضوح: مزيان</p>
+<div style="display:flex;gap:8px;margin:12px 0"><button style="border:1px solid #ddd;padding:6px 12px;border-radius:20px">صفحة 1 / 1</button><button onclick="document.getElementById('file').click()" style="background:#1e293b;color:#fff;padding:6px 16px;border-radius:20px;border:none">📷 صوّر بلان جديد</button></div>
+<input type="file" id="file" accept="image/*" hidden>
+<div class="plan-wrap" id="planWrap">
+<img id="planImg" src="https://i.ibb.co/6yQ7L9n/floor.jpg" alt="plan" style="display:none">
+<div id="defaultPlan" style="background:#fefcf3;border:1px solid #ddd;border-radius:12px;padding:8px;text-align:center;color:#999">صوّر البلان ديالك هنا - غادي يبان وغادي نحللو بذكاء خارق</div>
+<div class="dot" style="left:20%;bottom:30%" onclick="explain('المدخل')"></div>
+<div class="dot" style="left:50%;top:60%" onclick="explain('الكوزينة')"></div>
+</div>
+<p style="text-align:center;font-size:13px;color:#64748b;margin:8px 0">👆 ضغط على شي بيت فالبلان باش تشوف الشرح ديالو.</p>
+<div class="card" style="margin-top:12px"><b>رسم مبسط</b>
+<div class="simple">
+<div class="room bed" onclick="explain('بيت النعاس الرئيسي')">بيت النعاس الرئيسي</div>
+<div class="room bed" onclick="explain('بيت النعاس الثاني')">بيت النعاس الثاني</div>
+<div class="room living" onclick="explain('الصالون')">الصالون / بيت الكلاس</div>
+<div class="room bath" onclick="explain('الحمام')">الحمام</div>
+<div class="room kit" onclick="explain('الكوزينة')">الكوزينة ومكان الأكل</div>
+<div class="room" style="background:#eee" onclick="explain('الممر')">الممر / الحلقة</div>
+</div>
+<div class="legend"><span><span style="width:12px;height:12px;background:#fed7aa;display:inline-block;border-radius:3px"></span> صالة / صالون</span><span><span style="width:12px;height:12px;background:#ddd6fe;display:inline-block;border-radius:3px"></span> بيت النعاس</span><span><span style="width:12px;height:12px;background:#fbcfe8;display:inline-block;border-radius:3px"></span> كوزينة</span><span><span style="width:12px;height:12px;background:#a7f3d0;display:inline-block;border-radius:3px"></span> حمام</span></div>
+</div>
+<div class="tabs"><div class="tab">التفاصيل</div><div class="tab">البيوت</div><div class="tab active">خطوة بخطوة</div></div>
+<div id="ai" class="ai-box" style="display:none">كنحلل...</div>
+<div id="res" style="display:none"><button class="green-btn" style="background:#25D366" onclick="shareWA()">📲 صيفط التحليل واتساب</button></div>
+</div>
+
+<div id="learn" class="view">
+<h1 style="font-size:32px">تعلم تقرا البلان من الصفر</h1><p style="color:#64748b">سبع دروس قصار، بالدارجة، باش تولي تفهم أي بلان.</p>
+<div class="card" style="margin-top:16px;padding:0;overflow:hidden">
+<div class="accordion"><div class="acc-head" onclick="toggle(this)">1. شنو هو البلان؟ <span>⌄</span></div><div class="acc-body">البلان هو رسمة ديال الدار كتشوفها من الفوق، بحال إلا حيدتي السقف. كل خط كيمثل حيط، وكل فراغ كيمثل باب ولا شرجم.</div></div>
+<div class="accordion"><div class="acc-head" onclick="toggle(this)">2. الحيوط <span>⌄</span></div><div class="acc-body open">الخطوط الغليظة هوما الحيوط الحاملة ديال البنيان، والخطوط الرقيقة غالبا حيوط ديال التقسيم. ما تهدم حتى حيط بلا ما تشاور مهندس.</div></div>
+<div class="accordion"><div class="acc-head" onclick="toggle(this)">3. الأبواب <span>⌄</span></div><div class="acc-body">الباب كيبان فالبلان على شكل قوس. القوس كيقولك فين كيحل الباب.</div></div>
+<div class="accordion"><div class="acc-head" onclick="toggle(this)">4. الشراجم <span>⌄</span></div><div class="acc-body">الشرجم كيبان خط رقيق فالحيط، كيخلي الضو والهوا يدخل.</div></div>
+<div class="accordion"><div class="acc-head" onclick="toggle(this)">5. القياسات <span>⌄</span></div><div class="acc-body">كل بيت عندو الطول والعرض مكتوبين، مثلا 3x4 متر. ضروري تحسب المساحة.</div></div>
+<div class="accordion"><div class="acc-head" onclick="toggle(this)">6. الرموز ديال الكهرباء والما <span>⌄</span></div><div class="acc-body">المربعات الصغار هوما البريزات، والدوائر هوما الفوانيس.</div></div>
+</div>
+<button class="green-btn" style="background:#fff;color:#1e293b;border:1px solid #ddd" onclick="showView('home')">→ رجوع</button>
+</div>
+
+<div class="chat"><input id="q" placeholder="سول: فين السلم واش مزيان؟"><button class="send" onclick="askAI()">سول 🎤</button></div>
+
 <script>
-// === المفتاح الجديد AQ - خدام ===
 const FREE_GEMINI_KEY = "AQ.Ab8RN6Irlco0Sa9RkokTJi10-q6S4uwaNeHKHdXss3F6ZHsd9Q";
-
-let imgBase64="", lastAnswer="", used=parseInt(localStorage.getItem('fahem_used')||'0');
-function updateQuota(){let l=20-used;let el=document.getElementById('left');if(el)el.innerText=l;return l>0}
-function consume(){used++;localStorage.setItem('fahem_used',used);updateQuota()}
+let imgBase64="", lastAnswer="";
 function showView(id){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById(id).classList.add('active')}
-document.getElementById('file').addEventListener('change',function(){if(!updateQuota()){alert('⛔ كملتي 20');return}let f=this.files[0];let r=new FileReader();r.onload=e=>{document.getElementById('up').src=e.target.result;imgBase64=e.target.result.split(',')[1];document.getElementById('res').style.display='block';askAI('حلل هاد البلان بالدارجة: فين الصالون، فين السلم واش مزيان وعلاش، فين الكوزينة، وعطي نصائح');};r.readAsDataURL(f);showView('scan')});
-
+function toggle(el){let body=el.nextElementSibling;body.classList.toggle('open')}
+function filterMat(){let v=document.getElementById('searchMat').value.toLowerCase();let rows=document.querySelectorAll('#matTable tr');rows.forEach((r,i)=>{if(i==0)return;r.style.display=r.innerText.toLowerCase().includes(v)?'':'none'})}
+document.getElementById('file').addEventListener('change',function(){let f=this.files[0];if(!f)return;let r=new FileReader();r.onload=e=>{document.getElementById('planImg').src=e.target.result;document.getElementById('planImg').style.display='block';document.getElementById('defaultPlan').style.display='none';imgBase64=e.target.result.split(',')[1];showView('scan');askAI('حلل هاد البلان بالدارجة: فين الصالون، فين البيوت، فين الكوزينة، فين السلم واش مزيان وعلاش، و3 نصائح');};r.readAsDataURL(f)});
+async function explain(room){document.getElementById('ai').style.display='block';document.getElementById('ai').innerText='🧠 كنشرح: '+room+'...';askAI('شرح ليا بالدارجة فين كاين '+room+' فهاد البلان، واش مزيان ولا لا وعلاش، وعطي نصيحة')}
 async function askAI(txt){
- let qq=txt||document.getElementById('q').value;if(!qq) return;
- if(!updateQuota()&&!txt){alert('⛔ كملتي 20 - سير واتساب');return}
- let resDiv=document.getElementById('res');if(resDiv)resDiv.style.display='block';showView('scan');
- document.getElementById('ai').innerText='🧠 كنحلل بذكاء خارق...';document.getElementById('q').value='';
- let prompt=`أنت خبير بناء مغربي كتهضر بالدارجة بطلاقة وذكاء خارق. السؤال: ${qq}. جاوب مفصل بالدارجة مع إيموجي: فين كاين فالبلان بالضبط، واش مزيان ولا لا وعلاش، ونصائح عملية.`;
+ let qq=txt||document.getElementById('q').value;if(!qq)return;
+ document.getElementById('ai').style.display='block';document.getElementById('res').style.display='block';
+ document.getElementById('ai').innerText='🧠 كنحلل الصورة بذكاء خارق...';document.getElementById('q').value='';
+ let prompt=`أنت خبير بناء مغربي كتهضر بالدارجة. ${qq}. جاوب مفصل بالدارجة مع إيموجي.`;
  try{
-  let res=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${FREE_GEMINI_KEY}`,{method:'POST',headers:{'Content-Type':'application/json','x-goog-api-key': FREE_GEMINI_KEY},body:JSON.stringify({contents:[{parts:[{text:prompt}]}]})});
-  let data=await res.json();
-  console.log(data);
-  let ans=data.candidates?.[0]?.content?.parts?.[0]?.text||"البلان مزيان ومتوازن";
-  document.getElementById('ai').innerText=ans;lastAnswer=ans;speakAI();if(!txt) consume();
- }catch(e){document.getElementById('ai').innerText='⚠️ السيستيم عامر دابا، جرب بعد شوية.\n\n🪜 السلم كاين حدا المدخل مزيان.'}
+  let parts=[];if(imgBase64)parts.push({inline_data:{mime_type:"image/jpeg",data:imgBase64}});
+  parts.push({text:prompt});
+  let res=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent`,{method:'POST',headers:{'Content-Type':'application/json','x-goog-api-key':FREE_GEMINI_KEY},body:JSON.stringify({contents:[{parts:parts}]})});
+  let data=await res.json();console.log(data);
+  let ans=data.candidates?.[0]?.content?.parts?.[0]?.text||"البلان مزيان";
+  document.getElementById('ai').innerText=ans;lastAnswer=ans;
+ }catch(e){document.getElementById('ai').innerText='⚠️ عامر دابا - عاود جرب'}
 }
-function speakAI(){let t=lastAnswer||document.getElementById('ai').innerText;let u=new SpeechSynthesisUtterance(t);u.lang='ar-MA';speechSynthesis.speak(u);}
-function startVoice(){let btn=document.getElementById('micBtn');let rec=new (window.webkitSpeechRecognition||window.SpeechRecognition)();rec.lang='ar-MA';rec.onstart=()=>btn.classList.add('on');rec.onend=()=>btn.classList.remove('on');rec.onresult=e=>{document.getElementById('q').value=e.results[0][0].transcript;askAI();};rec.start();}
-function shareWA(){let t=document.getElementById('ai').innerText;window.open('https://wa.me/212647205383?text='+encodeURIComponent('تحليل البلان:\n\n'+t),'_blank')}
-updateQuota();
-</script></body></html>
+function shareWA(){window.open('https://wa.me/212647205383?text='+encodeURIComponent(lastAnswer||document.getElementById('ai').innerText),'_blank')}
+function calcCost(){alert('حساب التكلفة: قريبا - تواصل واتساب 0647205383')}
+</script>
+</body>
+</html>د
