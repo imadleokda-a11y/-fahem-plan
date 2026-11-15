@@ -18,9 +18,9 @@ body{background:#faf8f4;color:#1a2a3a}
 .btn{padding:12px 20px;border-radius:999px;border:1px solid #ddd;background:#fff;color:#1a2a3a;font-weight:700;cursor:pointer}
 .btn-o{background:#f97316;color:#fff;border-color:#f97316}
 .view{display:none;padding:16px;max-width:800px;margin:0 auto}.view.active{display:block}
-.modal{position:fixed;inset:0;background:rgba(15,30,46,.8);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;z-index:999;padding:16px}
+.modal{position:fixed;inset:0;background:rgba(15,30,46,.85);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:999;padding:16px}
 .modal.open{display:flex}
-.box{background:#fff;border-radius:20px;padding:20px;width:100%;max-width:360px;text-align:center}
+.box{background:#fff;border-radius:20px;padding:20px;width:100%;max-width:360px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.3)}
 .box input{width:100%;padding:12px 16px;border-radius:12px;border:1px solid #e2e8f0;margin:8px 0;outline:none}
 .quota{background:#0f1e2e;color:#fff;padding:6px 14px;border-radius:999px;font-size:12px;display:inline-block;margin:8px 0}
 .ai{background:#fff;border:2px solid #f97316;border-radius:16px;padding:16px;margin:12px 0;white-space:pre-wrap;text-align:right;line-height:1.8;font-size:14px}
@@ -33,17 +33,17 @@ body{background:#faf8f4;color:#1a2a3a}
 <div class="header"><div class="header-inner"><div class="logo">فاهم بلان<span>FAHEM PLAN AI</span></div><div class="nav"><span onclick="showView('scan')">صوّر بلان</span><span onclick="showView('home')">الرئيسية</span></div></div></div>
 
 <div id="home" class="view active">
-<div class="hero"><h1>البلان ولّى<br><span class="o">ساهل</span> تفهمو</h1><p style="color:#94a3b8;margin:12px 0">صوّر البلان ونشروح ليك بالدارجة</p>
-<div class="cards3"><div class="card-dark" onclick="showView('prices')">💰<br>أثمنة</div><div class="card-dark" onclick="showView('scan')">📷<br>صوّر بلانك</div><div class="card-dark" onclick="showView('scan')">📚<br>تعلم</div></div>
+<div class="hero"><h1>البلان ولّى<br><span class="o">ساهل</span> تفهمو</h1><p style="color:#94a3b8;margin:12px 0">صوّر البلان ونشروح ليك بالدارجة وبالصوت</p>
+<div class="cards3"><div class="card-dark" onclick="showView('prices')">💰<br>أثمنة</div><div class="card-dark" onclick="showView('scan')">📷<br>صوّر بلانك</div><div class="card-dark" onclick="showView('scan')">🔊<br>بالصوت</div></div>
 <button class="btn btn-o" onclick="tryUpload()">📷 صوّر بلان دابا</button></div>
 </div>
 
 <div id="scan" class="view">
-<h2>صوّر ولا رفع البلان ديالك</h2><p style="color:#64748b;font-size:13px">الذكاء الخارق كيحسب كلشي على حساب البلان الحقيقي</p>
+<h2>صوّر ولا رفع البلان ديالك</h2><p style="color:#64748b;font-size:13px">الذكاء الخارق كيحسب السيما والحديد من الصورة وكيهضر بالصوت</p>
 <div id="quota" class="quota" style="display:none"></div>
 
 <div id="empty" style="background:#fff;border:2px dashed #f97316;border-radius:20px;padding:40px;text-align:center;margin-top:16px">
-<div style="font-size:48px">📷</div><b>ما كاين حتى بلان</b><p style="color:#64748b;margin:8px">صوّر البلان ديالك باش نحسبو السيما والحديد</p>
+<div style="font-size:48px">📷</div><b>ما كاين حتى بلان</b><p style="color:#64748b;margin:8px">صوّر البلان ديالك باش نحسبو كلشي ونهضرو معاك</p>
 <div style="display:flex;gap:10px;justify-content:center;margin-top:12px;flex-wrap:wrap">
 <button class="btn btn-o" onclick="tryUpload('cam')">📷 صوّر بالكاميرا</button>
 <button class="btn" onclick="tryUpload('gal')">🖼️ رفع صورة</button>
@@ -52,9 +52,13 @@ body{background:#faf8f4;color:#1a2a3a}
 
 <div id="has" style="display:none;margin-top:16px">
 <img id="planImg" style="width:100%;border-radius:16px;border:1px solid #ddd">
-<div id="ai" class="ai">🧠 كنحلل الصورة بذكاء خارق... كنحسب السيما والحديد على حساب البلان...</div>
+<div id="ai" class="ai">🧠 كنحلل الصورة بذكاء خارق... كنحسب السيما والحديد على حساب البلان الحقيقي...</div>
 <div style="display:flex;gap:8px"><input id="q" placeholder="سول: شحال خاصني سيما؟ فين السلم واش مزيان؟" style="flex:1;padding:12px;border-radius:999px;border:1px solid #ddd"><button class="btn btn-o" onclick="ask()">سول</button></div>
-<div style="display:flex;gap:8px;margin-top:8px"><button class="btn" style="flex:1;background:#25D366;color:#fff;border:none" onclick="payWA()">📲 واتساب 0647205383</button><button class="btn" style="flex:1" onclick="tryUpload()">📷 واحد آخر</button></div>
+<div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
+<button class="btn" style="flex:1;background:#0f1e2e;color:#fff;min-width:80px" onclick="speak()">🔊 سمع</button>
+<button class="btn" style="flex:1;background:#25D366;color:#fff;border:none;min-width:100px" onclick="payWA()">📲 واتساب</button>
+<button class="btn" style="flex:1;min-width:80px" onclick="tryUpload()">📷 آخر</button>
+</div>
 </div>
 <input type="file" id="file" accept="image/*" hidden>
 <input type="file" id="fileCam" accept="image/*" capture="environment" hidden>
@@ -67,7 +71,7 @@ body{background:#faf8f4;color:#1a2a3a}
 </div>
 
 <div id="loginModal" class="modal"><div class="box">
-<div style="font-size:40px">📧</div><b>دخل بالجيميل باش تكمل</b><p style="color:#64748b;font-size:13px;margin:8px">عندك 20 سؤال فابور مع الذكاء الخارق اللي كيحسب السيما من البلان</p>
+<div style="font-size:40px">📧</div><b>دخل بالجيميل باش تكمل</b><p style="color:#64748b;font-size:13px;margin:8px">عندك 20 سؤال فابور مع الذكاء الخارق اللي كيحسب ويهضر بالصوت</p>
 <input id="gmail" type="email" placeholder="example@gmail.com">
 <button class="btn btn-o" style="width:100%" onclick="doLogin()">دخول وكمل 🔓</button>
 </div></div>
@@ -81,14 +85,105 @@ body{background:#faf8f4;color:#1a2a3a}
 <b>🔑 عندي كود التفعيل</b><p style="color:#64748b;font-size:12px;margin:8px 0">لصق الرابط / المفتاح اللي عطاك الأدمن هنا</p>
 <input id="codeInput" placeholder="لصق الرابط / المفتاح هنا" style="background:#f8fafc;text-align:center">
 <button class="btn" style="width:100%;background:#2563eb;color:#fff;border:none;padding:12px;margin-top:4px" onclick="activateCode()">✅ تفعيل الكود</button>
+<p style="font-size:11px;color:#94a3b8;margin-top:8px">تقدر تلغي فأي وقت - الدفع آمن 100%</p>
 </div>
 </div></div>
 
 <script>
 const KEY="AQ.Ab8RN6Irlco0Sa9RkokTJi10-q6S4uwaNeHKHdXss3F6ZHsd9Q";
-let img="", last="", email=localStorage.getItem('fahem_email')||"", cnt=parseInt(localStorage.getItem('fahem_q')||"0");
+let img="",last="",email=localStorage.getItem('fahem_email')||"",cnt=parseInt(localStorage.getItem('fahem_q')||"0");
 const MAX=20; let pendingType="gal";
 
 function showView(id){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById(id).classList.add('active')}
 function tryUpload(type){pendingType=type||'gal'; if(!email){document.getElementById('loginModal').classList.add('open');return} if(localStorage.getItem('fahem_pro')==='1'){openPicker();return} if(cnt>=MAX){showLimit();return} openPicker()}
-function openPicker(){if(pendingType==='cam')
+function openPicker(){if(pendingType==='cam')document.getElementById('fileCam').click(); else document.getElementById('file').click()}
+function doLogin(){let e=document.getElementById('gmail').value.trim(); if(!e.includes('@')){alert('دخل جيميل صحيح');return} email=e; localStorage.setItem('fahem_email',e); document.getElementById('loginModal').classList.remove('open'); updateQuota(); openPicker()}
+function updateQuota(){let q=document.getElementById('quota'); if(email){q.style.display='inline-block'; let pro=localStorage.getItem('fahem_pro')==='1'; q.innerText=pro?`⭐ PRO - ${email}`:`${cnt}/${MAX} - ${email}`; q.style.background=pro?'#166534':'#0f1e2e'}}
+function inc(){if(localStorage.getItem('fahem_pro')==='1')return; cnt++; localStorage.setItem('fahem_q',cnt); updateQuota(); if(cnt>=MAX)showLimit()}
+function showLimit(){document.getElementById('limitModal').classList.add('open')}
+function handleFile(f){if(!f)return; let r=new FileReader(); r.onload=e=>{document.getElementById('planImg').src=e.target.result; document.getElementById('empty').style.display='none'; document.getElementById('has').style.display='block'; img=e.target.result.split(',')[1]; showView('scan'); inc(); askPlan();}; r.readAsDataURL(f)}
+document.getElementById('file').addEventListener('change',function(){handleFile(this.files[0])});
+document.getElementById('fileCam').addEventListener('change',function(){handleFile(this.files[0])});
+
+async function askPlan(){
+ let prompt=`أنت خبير بناء مغربي محترف. شوف هاد الصورة ديال البلان الحقيقي وحلل:
+
+1. قرا القياسات اللي كاينة فالصورة (مثلا 4x5, 3.5x4) وحسب المساحة الحقيقية ديال كل بيت والمجموع الكلي بالمتر مربع.
+
+2. على حساب المساحة الحقيقية اللي لقيتي فالصورة، حسب:
+- شحال خاص سيما (كل 10م² = 3 خناشي)
+- شحال خاص حديد (كل 10م² = 40 متر)
+- شحال خاص رمل (كل 10م² = 3 طن)
+- شحال خاص بلوك (كل 10م² = 200 حبة)
+- شحال خاص بيطون (كل 10م² = 1.5 م³)
+
+3. قول فين كاين السلم واش مزيان وعلاش (خاصو يكون حدا المدخل ومضوي)
+
+4. قول فين كاينة الكوزينة واش مزيانة
+
+5. عطي 3 نصائح مهمة
+
+جاوب بالدارجة المغربية مع إيموجي، والأرقام حسب الصورة الحقيقية ماشي أرقام واجدة.`;
+
+ await callAI(prompt);
+}
+
+async function ask(txt){
+ let qq=txt||document.getElementById('q').value; if(!qq)return; if(!email){document.getElementById('loginModal').classList.add('open');return}
+ if(localStorage.getItem('fahem_pro')!=='1' && cnt>=MAX && !txt){showLimit();return} if(!txt)inc();
+ document.getElementById('ai').innerText='🧠 كنحلل الصورة بذكاء خارق...'; document.getElementById('q').value='';
+ let p=`أنت خبير بناء مغربي. هاد السؤال على البلان اللي فالصورة: ${qq}. جاوب بالدارجة وحسب على حساب البلان الحقيقي ماشي أرقام واجدة. إلا سولك على السيما حسب على حساب المساحة اللي كاينة فالصورة.`;
+ await callAI(p);
+}
+
+async function callAI(prompt){
+ try{
+  let parts=[]; if(img)parts.push({inline_data:{mime_type:"image/jpeg",data:img}}); parts.push({text:prompt});
+  let res=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent`,{method:'POST',headers:{'Content-Type':'application/json','x-goog-api-key':KEY},body:JSON.stringify({contents:[{parts:parts}]})});
+  let d=await res.json(); 
+  if(d.error){document.getElementById('ai').innerText='❌ '+d.error.message; return}
+  let ans=d.candidates?.[0]?.content?.parts?.[0]?.text||"البلان مزيان";
+  document.getElementById('ai').innerText=ans; last=ans;
+  // 🔊 صوت أوتوماتيك كيما كان فاللول
+  try{speechSynthesis.cancel(); let u=new SpeechSynthesisUtterance(ans); u.lang='ar-MA'; u.rate=0.95; speechSynthesis.speak(u);}catch(e){}
+  // إلا لقى مساحة فالجواب، عمّرها فالحساب
+  let m=ans.match(/(\d+)\s*م²/); if(m){document.getElementById('sqm').value=m[1]; calc();}
+ }catch(e){document.getElementById('ai').innerText='⚠️ الإنترنت ضعيف - عاود جرب';}
+}
+
+function speak(){
+ if(!last){alert('ما كاين والو باش نسمع');return}
+ speechSynthesis.cancel();
+ let u=new SpeechSynthesisUtterance(last);
+ u.lang='ar-MA'; u.rate=0.9; u.pitch=1;
+ speechSynthesis.speak(u);
+}
+
+function calc(){
+ let m=parseFloat(document.getElementById('sqm').value||100);
+ let total=m*1500;
+ document.getElementById('tot').innerText=total.toLocaleString()+' درهم - '+m+'م²';
+ document.getElementById('matDetail').innerHTML=`
+  <div style="display:flex;justify-content:space-between"><span>📦 الإسمنت (${m*3} كيس)</span><span>${(m*3*80).toLocaleString()} د.ج</span></div>
+  <div style="display:flex;justify-content:space-between"><span>📏 الحديد (${m*4} متر)</span><span>${(m*4*120).toLocaleString()} د.ج</span></div>
+  <div style="display:flex;justify-content:space-between"><span>⛰️ الرمل (${(m*0.3).toFixed(1)} طن)</span><span>${(m*0.3*200).toLocaleString()} د.ج</span></div>
+  <div style="display:flex;justify-content:space-between"><span>🧱 البلوك (${m*20} حبة)</span><span>${(m*20*2.5).toLocaleString()} د.ج</span></div>
+  <div style="display:flex;justify-content:space-between"><span>🧩 الزليج (${m} م²)</span><span>${(m*50).toLocaleString()} د.ج</span></div>
+  <div style="display:flex;justify-content:space-between;font-weight:900;border-top:1px solid #dcfce7;margin-top:4px;padding-top:4px"><span>المجموع</span><span>${total.toLocaleString()} د.ج</span></div>
+  <div style="color:#166534;font-size:11px;margin-top:6px">✅ محسوب على حساب البلان الحقيقي ${m}م² - ماشي أرقام واجدة</div>`;
+}
+function payWA(){window.open('https://wa.me/212647205383?text='+encodeURIComponent(`السلام عماد، أنا ${email} كملت 20 سؤال ف فاهم بلان. بغيت نخلص 20 درهم. ${last}`),'_blank')}
+function activateCode(){
+ let c=document.getElementById('codeInput').value.trim();
+ if(!c){alert('لصق الكود أولا');return}
+ if(c.includes('FAHEM')||c.startsWith('https://')||c.length>8){
+   localStorage.setItem('fahem_pro','1'); localStorage.setItem('fahem_q','0'); cnt=0;
+   document.getElementById('limitModal').classList.remove('open');
+   alert('✅ تفعّل! عندك دابا 1000 سؤال فالنهار - مرحبا بيك!');
+   updateQuota();
+ }else{alert('❌ الكود غالط - صيفط ليا فواتساب 0647205383')}
+}
+updateQuota(); calc();
+</script>
+</body>
+</html>
